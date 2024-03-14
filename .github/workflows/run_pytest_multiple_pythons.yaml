@@ -1,0 +1,31 @@
+name: run-pytest-multiple-pythons
+run-name: Run pytest on unit tests for multiple python versions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  checkout-and-test-multiple-python-versions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pyversion: [3.7, 3.9, 3.12]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.pyversion }}
+
+    - name: Upgrade pip
+      run: pip install --upgrade pip
+
+    - name: Install pytest
+      run: pip install pytest
+
+    - name: Run unit tests in verbose mode
+      run: pytest -v -m unit
+
+
