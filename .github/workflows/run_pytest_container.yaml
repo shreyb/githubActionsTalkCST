@@ -1,0 +1,24 @@
+name: run-pytest-container
+run-name: Run pytest on unit tests inside Docker container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  checkout-and-test:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.9-alpine
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Upgrade pip
+      run: pip install --upgrade pip
+
+    - name: Install pytest
+      run: pip install pytest
+
+    - name: Run unit tests in verbose mode
+      run: pytest -v -m unit
+
+
