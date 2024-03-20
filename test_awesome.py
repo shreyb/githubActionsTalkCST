@@ -33,5 +33,5 @@ def test_add_two_ints_bad_type(int1, int2):
 
 
 def test_subtract_two_ints():
-    assert subtract_two_ints(12,-3,15)
+    assert subtract_two_ints(12,-3) == 15
 
