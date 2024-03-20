@@ -31,7 +31,7 @@ def test_add_two_ints_bad_type(int1, int2):
     with pytest.raises(TypeError, match="One of the input values is NOT an int!!"):
         add_two_ints(int1, int2)
 
-
+@pytest.mark.unit
 def test_subtract_two_ints():
     assert subtract_two_ints(12,-3) == 15
 
